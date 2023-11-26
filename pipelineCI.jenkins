@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+    
+    environment {
+        PYTHON_BIN = "${tool 'Python3'}" // Assuming you have configured a Python3 tool in Jenkins
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Setup') {
+            steps {
+                script {
+                    // Set up virtual environment and install dependencies
+                    sh "${PYTHON_BIN} -m venv venv"
+                    sh "source venv/bin/activate"
+                    sh "${PYTHON_BIN} -m pip install -r requirements.txt" // Adjust as needed
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                script {
+                    // Activate virtual environment and run tests
+                    sh "source venv/bin/activate"
+                    sh "${PYTHON_BIN} -m pytest tests/"
+                }
+            }
+        }
+
+        stage('Push to Repository') {
+            steps {
+                script {
+                    // Commit and push changes
+                    sh "git config user.email 'jenkins@example.com'"
+                    sh "git config user.name 'Jenkins CI'"
+                    sh "git add ."
+                    sh "git commit -m 'Jenkins CI: Automated tests'"
+                    sh "git push origin ${BRANCH_NAME}"
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'CI Pipeline succeeded!'
+        }
+
+        failure {
+            echo 'CI Pipeline failed!'
+        }
+    }
+}
