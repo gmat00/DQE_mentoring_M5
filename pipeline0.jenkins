@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON_BIN = "${tool 'python3'}"
+        PYTHON_BIN = "${tool 'python'}"
     }
 
     stages {
