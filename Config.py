@@ -1,4 +1,4 @@
-SERVER = 'localhost'
+SERVER = 'THINKPAD-HLEB\SQLEXPRESS'
 DATABASE = 'AdventureWorks2012'
 USERNAME = 'Hleb'
 PASSWORD = 'Password'

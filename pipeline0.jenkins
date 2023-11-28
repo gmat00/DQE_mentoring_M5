@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         PYTHON_BIN = "${tool 'Python3'}"
     }
@@ -12,7 +12,7 @@ pipeline {
             }
         }
 
-        stage('Setup') {
+    stage('Setup') {
             steps {
                 script {
                     sh "${PYTHON_BIN} -m venv venv"
@@ -26,19 +26,7 @@ pipeline {
             steps {
                 script {
                     sh "source venv/bin/activate"
-                    sh "${PYTHON_BIN} -m pytest tests/"
-                }
-            }
-        }
-
-        stage('Push to Repository') {
-            steps {
-                script {
-                    sh "git config user.email 'jenkins@example.com'"
-                    sh "git config user.name 'Jenkins CI'"
-                    sh "git add ."
-                    sh "git commit -m 'Jenkins CI: Automated tests'"
-                    sh "git push origin ${BRANCH_NAME}"
+                    sh "${PYTHON_BIN} py -m pytest 'test.py' --html=report.html"
                 }
             }
         }
