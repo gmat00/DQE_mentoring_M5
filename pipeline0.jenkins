@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        sh "python3 -m venv venv"
+        PYTHON_BIN = "${tool 'Python3'}"
     }
 
     stages {
