@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        sh "python3 -m venv venv"}"
+        sh "python3 -m venv venv"
     }
 
     stages {
