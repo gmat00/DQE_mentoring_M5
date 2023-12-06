@@ -8,16 +8,27 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                script {
+                    // Checkout the source code from version control
+                    checkout scm
+                }
             }
         }
 
-
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install project dependencies
+                    sh 'pip install -r requirements.txt'
+                }
+            }
+        }
 
         stage('Run Tests') {
             steps {
                 script {
-                    sh "py -m pytest 'test.py' --html=report.html"
+                    // Run pytest tests
+                    sh 'pytest test.py'
                 }
             }
         }
