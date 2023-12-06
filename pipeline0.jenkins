@@ -17,6 +17,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
+                    echo "PYTHON_BIN: ${PYTHON_BIN}"
                     sh "${PYTHON_BIN} -m pip install -r requirements.txt"
                 }
             }
@@ -25,6 +26,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
+                    echo "PYTHON_BIN: ${PYTHON_BIN}"
                     sh "${PYTHON_BIN} -m pytest test.py --html=report.html"
                 }
             }
