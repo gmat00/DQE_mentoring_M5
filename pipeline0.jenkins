@@ -17,8 +17,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh "source venv/bin/activate"
-                    sh "${PYTHON_BIN} py -m pytest 'test.py' --html=report.html"
+                    sh "py -m pytest 'test.py' --html=report.html"
                 }
             }
         }
