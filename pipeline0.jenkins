@@ -12,15 +12,7 @@ pipeline {
             }
         }
 
-    stage('Setup') {
-            steps {
-                script {
-                    sh "${PYTHON_BIN} -m venv venv"
-                    sh "source venv/bin/activate"
-                    sh "${PYTHON_BIN} -m pip install -r requirements.txt"
-                }
-            }
-        }
+
 
         stage('Run Tests') {
             steps {
