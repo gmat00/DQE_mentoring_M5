@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // Install ODBC development files
-                    sh 'sudo apt-get install unixodbc-dev'  // Use the appropriate command for your system
+                    sh 'apt install unixodbc-dev --yes'  // Use the appropriate command for your system
 
                     // Install project dependencies
                     sh 'pip install -r requirements.txt'
