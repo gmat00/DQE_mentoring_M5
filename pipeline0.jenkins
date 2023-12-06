@@ -27,7 +27,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'pt -m pytest test.py --html=report.html '
+                    sh 'py -m pytest test.py --html=report.html '
                 }
             }
         }
