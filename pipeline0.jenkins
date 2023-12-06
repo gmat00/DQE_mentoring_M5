@@ -17,13 +17,14 @@ pipeline {
                 script {
                     // Install project dependencies
                     sh 'pip install -r requirements.txt'
+                    sh 'pip install numpy pytest'
                 }
             }
         }
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'pytest test.py --html=report.html '
+                    sh 'python -m pytest test.py'
                 }
             }
         }
