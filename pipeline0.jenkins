@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // Install project dependencies
-                    sh 'pip install -r requirements.txt'
+                    sh "${PYTHON_BIN} -m pip install -r requirements.txt"
                 }
             }
         }
