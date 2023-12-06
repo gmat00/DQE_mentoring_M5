@@ -23,7 +23,8 @@ def connect_to_db(server_name=SERVER, database_name=DATABASE):
 
 CURSOR = connect_to_db()
 
-
+def feature_2345():
+    pass
 
 
 
