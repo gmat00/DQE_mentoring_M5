@@ -18,8 +18,11 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'apt-get update'
-                    sh 'apt-get install -y unixodbc-dev'  // Use the appropriate command for your system
+                     // Update package list using yum
+                    sh 'yum update -y'
+
+                    // Install dependencies using yum
+                    sh 'yum install -y unixODBC-devel'  // Use the appropriate package name
 
                     // Install project dependencies
                     sh 'pip install -r requirements.txt'
