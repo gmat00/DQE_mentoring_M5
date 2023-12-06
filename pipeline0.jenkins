@@ -19,7 +19,6 @@ pipeline {
             steps {
                 script {
                     // Install project dependencies
-                    apt-get install unixodbc
                     sh 'pip install -r requirements.txt'
                 }
             }
