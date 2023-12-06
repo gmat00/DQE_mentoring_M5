@@ -18,12 +18,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                     // Update package list using yum
-                    sh 'yum update -y'
-
-                    // Install dependencies using yum
-                    sh 'yum install -y unixODBC-devel'  // Use the appropriate package name
-
                     // Install project dependencies
                     sh 'pip install -r requirements.txt'
                 }
