@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    environment {
+        SOURCE_BRANCH = 'main'
+        DESTINATION_FOLDER = '/path/to/new/folder'
+    }
+
+    stages {
+        stage('Copy Code') {
+            steps {
+                script {
+                    sh "mkdir -p $DESTINATION_FOLDER"
+                    sh "cp -r * $DESTINATION_FOLDER"
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Code copy successful!'
+        }
+        failure {
+            echo 'Code copy failed!'
+        }
+    }
+}
